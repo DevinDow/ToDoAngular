@@ -1,0 +1,17 @@
+.title_block {
+  margin-top: 18px;
+}
+
+.title {
+  font-size: xx-large;
+  vertical-align: middle;
+}
+
+.icon {
+  vertical-align: middle;
+}
+
+.completed, .completed span {
+  color: rgba(0, 0, 0, 0.2);
+  text-decoration: line-through;
+}

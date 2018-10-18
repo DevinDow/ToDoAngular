@@ -1,5 +1,5 @@
-<p>
+<div class="task">
   <input type="checkbox" [(ngModel)]="task.done">
-  {{ task.priority }}
-  {{ task.name }}
-</p>
+  <span class="priority">{{ task.priority }}</span>
+  <span class="name">{{ task.name }}</span>
+</div>

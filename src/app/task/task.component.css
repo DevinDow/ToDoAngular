@@ -1,0 +1,20 @@
+.task * {
+  margin: 5px;
+}
+
+.task input {
+  padding: 3px;
+}
+
+span {
+  display: inline-block;
+}
+
+.priority {
+  width: 50px;
+  text-align: center;
+}
+
+.name {
+  width: 200px;
+}
