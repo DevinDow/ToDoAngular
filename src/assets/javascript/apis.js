@@ -42,13 +42,15 @@ export function fetchLists(setLists) {
 }
 
 export function fetchTasks(listID, setTasks) {
-  fetch('rootURL + /lists/'+listID+'/tasks.json')
+  console.log("*** APIs.fetchTasks()")
+  fetch(rootURL + '/lists/'+listID+'/tasks.json', {credentials: 'include'}) // credentials: include for passing cookies
     .then((response) => {
+      console.log("/lists/"+listID+" Response=" + response)
+      console.log(response)
       return response.json()
     })
     .then((data) => {
-      console.log("fetched " + data.length + " Task(s)")
-      console.log(data)
+      console.log("/lists/"+listID+" JSON = " + JSON.stringify(data))
       if (setTasks) setTasks(data)
     });
 }
