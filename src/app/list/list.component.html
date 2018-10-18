@@ -1,1 +1,4 @@
-<h3>{{ list.name }}</h3>
+<div class="list container">
+  <h3>{{ list.name }}</h3>
+  <app-task *ngFor="let task of tasks" [task]=task></app-task>
+</div>
