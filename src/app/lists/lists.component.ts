@@ -1,26 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 
+import { fetchLists } from '../../assets/javascript/apis.js'
+
 @Component({
   selector: 'app-lists',
   templateUrl: './lists.component.html',
   styleUrls: ['./lists.component.css']
 })
 export class ListsComponent implements OnInit {
+  lists: {}
 
   constructor() { }
 
   ngOnInit() {
-    console.log("*** ngOnInit()")
-    fetch('http://localhost:3000/lists.json')
-    .then((response) => {
-      return response.json()
-    })
-    .then((data) => {
-      console.log("fetched " + data.length + " List(s)")
-      console.log(data)
-      
-    });
+    this.setLists = this.setLists.bind(this);
 
+    console.log("*** ListsComponent.ngOnInit()")
+
+    fetchLists(this.setLists)
+  }
+
+  setLists(lists) {
+    this.lists = lists
+    console.log("*** setLists()")
+    console.log(this.lists)
   }
 
 }
