@@ -6,7 +6,8 @@ function getToken() {
   return token
 }
 
-export function login(email, password) {
+export function login(email, password, onLoggedIn) {
+  console.log("*** APIs.login()")
   fetch(rootURL + '/login.json',
   {
     method: 'POST',
@@ -22,11 +23,12 @@ export function login(email, password) {
   })
   .then((data) => {
     console.log("/login JSON = " + JSON.stringify(data))
-    fetchLists()
+    if (onLoggedIn) onLoggedIn()
   });
 }
 
 export function fetchLists(setLists) {
+  console.log("*** APIs.fetchLists()")
   fetch(rootURL + '/lists.json', {credentials: 'include'}) // credentials: include for passing cookies
     .then((response) => {
       console.log("/lists Response=" + response)
