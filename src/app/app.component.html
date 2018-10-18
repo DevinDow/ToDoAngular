@@ -1,9 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <p>logged_in? <input type="checkbox" [(ngModel)]="logged_in"></p>
 
-<div style="text-align:center">
+<div>
   <h1>
-    Welcome to {{ title }}!
+    {{ title }}
   </h1>
   <app-lists *ngIf="logged_in"></app-lists>
 </div>

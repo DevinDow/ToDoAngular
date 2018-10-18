@@ -1,1 +1,5 @@
-<p>{{ task.name }}</p>
+<p>
+  <input type="checkbox" [(ngModel)]="task.done">
+  {{ task.priority }}
+  {{ task.name }}
+</p>
