@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { fetchLists } from '../../assets/javascript/apis.js'
+import { TodoService } from "../todo.service";
 
 @Component({
   selector: 'app-lists',
@@ -10,14 +10,14 @@ import { fetchLists } from '../../assets/javascript/apis.js'
 export class ListsComponent implements OnInit {
   lists: {}
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
     this.setLists = this.setLists.bind(this);
 
     console.log("*** ListsComponent.ngOnInit()")
 
-    fetchLists(this.setLists)
+    this.todoService.fetchLists().subscribe(lists => this.setLists(lists));
   }
 
   setLists(lists) {

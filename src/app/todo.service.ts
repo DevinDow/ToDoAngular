@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ObjectUnsubscribedError, Observable } from 'rxjs';
-import { rootURL } from "../assets/javascript/apis.js";
+import { rootURL, getToken } from "../assets/javascript/apis.js";
 import { Credentials } from './credentials.js';
+import { List } from "./list";
 
 import { map, tap, catchError } from 'rxjs/operators';
 
@@ -15,6 +16,7 @@ const httpOptions = {
 })
 export class TodoService {
   private loginUrl = rootURL + '/login.json'
+  private listsUrl = rootURL + '/lists.json'
 
   constructor(private http: HttpClient) { }
 
@@ -27,6 +29,17 @@ export class TodoService {
         catchError(this.handleError("postLogin()", "cannot login"))
       );
   }
+
+  // GET /lists
+  fetchLists (): Observable<List[]> {
+    console.log("*** TodoService.fetchLists()")
+    return this.http.get<List[]>(this.listsUrl, {withCredentials: true})
+      .pipe(
+        tap(heroes => this.log("fetched Lists")),
+        catchError(this.handleError("fetchLists()", []))
+      );
+  }
+
 
   private log(message: string) {
     console.log(message);
