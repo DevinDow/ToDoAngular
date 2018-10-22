@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
-import { login } from '../assets/javascript/apis.js'
+import { TodoService } from "./todo.service";
+import { Credentials } from './credentials';
+
+import { map, tap, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +15,15 @@ export class AppComponent implements OnInit {
   title = 'ToDoAngular';
   logged_in = false
 
+  constructor(private todoService: TodoService) { }
+
   ngOnInit() {
     this.onLoggedIn = this.onLoggedIn.bind(this);
 
     console.log("*** AppComponent.ngOnInit()")
 
-    login('DevinDow@gmail.com', 'password', this.onLoggedIn)
+    let credentials: Credentials = {email: 'DevinDow@gmail.com', password: 'password'};
+    this.todoService.postLogin(credentials).subscribe(() => this.logged_in = true;);
   }
 
   onLoggedIn() {

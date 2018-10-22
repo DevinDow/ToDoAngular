@@ -1,6 +1,6 @@
-let rootURL = 'http://localhost:3000'
+export var rootURL = 'http://localhost:3000'
 
-function getToken() {
+export function getToken() {
   let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
   console.log('token = ' + token)
   return token
