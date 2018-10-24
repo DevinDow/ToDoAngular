@@ -24,7 +24,7 @@ export class TodoService {
     this.log("postLogin()")
     return this.http.post<string>(`${rootURL}/login.json`, credentials, httpOptions)
       .pipe(
-        tap(heroes => this.log("logged in")),
+        tap(_ => this.log("logged in")),
         catchError(this.handleError("postLogin()", "cannot login"))
       );
   }
@@ -34,7 +34,7 @@ export class TodoService {
     this.log("fetchLists()")
     return this.http.get<List[]>(`${rootURL}/lists.json`, {withCredentials: true})
       .pipe(
-        tap(heroes => this.log("fetched Lists")),
+        tap(_ => this.log("fetched Lists")),
         catchError(this.handleError("fetchLists()", []))
       );
   }
@@ -44,7 +44,7 @@ export class TodoService {
     this.log(`fetchTasks(listId=${listId})`)
     return this.http.get<Task[]>(`${rootURL}/lists/${listId}/tasks.json`, {withCredentials: true})
       .pipe(
-        tap(heroes => this.log("fetched Tasks")),
+        tap(_ => this.log("fetched Tasks")),
         catchError(this.handleError("fetchTasks()", []))
       );
   }
@@ -63,11 +63,11 @@ export class TodoService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
