@@ -6,6 +6,7 @@ export function getToken() {
   return token
 }
 
+/* These were replaced with 
 export function login(email, password, onLoggedIn) {
   console.log("*** APIs.login()")
   fetch(rootURL + '/login.json',
@@ -136,3 +137,4 @@ export function deleteTask(id, onTaskDeleted) {
     if (onTaskDeleted) onTaskDeleted()
   })
 }
+*/

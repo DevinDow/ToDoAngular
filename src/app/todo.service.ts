@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ObjectUnsubscribedError, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { rootURL, getToken } from "../assets/javascript/apis.js";
 import { Credentials } from './credentials.js';
 import { List } from "./list.js";
@@ -20,12 +20,12 @@ export class TodoService {
   constructor(private http: HttpClient) { }
 
   // POST /login
-  postLogin (credentials: Credentials): Observable<string> {
+  postLogin (credentials: Credentials): Observable<boolean> {
     this.log("postLogin()")
-    return this.http.post<string>(`${rootURL}/login.json`, credentials, httpOptions)
+    return this.http.post<boolean>(`${rootURL}/login.json`, credentials, httpOptions)
       .pipe(
-        tap(_ => this.log("logged in")),
-        catchError(this.handleError("postLogin()", "cannot login"))
+        tap(_ => {return of(true);}), // Observable<boolean> => return true),
+        catchError(this.handleError("postLogin()", false))
       );
   }
 
