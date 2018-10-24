@@ -12,7 +12,11 @@ export class TaskComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("*** TaskComponent.ngOnInit()")
+    this.log(`ngOnInit() => ${this.task.priority} ${this.task.name}`)
+  }
+
+  log(text: string) {
+    console.log(`* TaskComponent#${this.task.id}.${text}`);
   }
 
 }

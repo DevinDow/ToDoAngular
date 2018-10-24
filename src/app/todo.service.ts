@@ -21,7 +21,7 @@ export class TodoService {
 
   // POST /login
   postLogin (credentials: Credentials): Observable<string> {
-    console.log("*** TodoService.postLogin()")
+    this.log("postLogin()")
     return this.http.post<string>(`${rootURL}/login.json`, credentials, httpOptions)
       .pipe(
         tap(heroes => this.log("logged in")),
@@ -31,7 +31,7 @@ export class TodoService {
 
   // GET /lists
   fetchLists (): Observable<List[]> {
-    console.log("*** TodoService.fetchLists()")
+    this.log("fetchLists()")
     return this.http.get<List[]>(`${rootURL}/lists.json`, {withCredentials: true})
       .pipe(
         tap(heroes => this.log("fetched Lists")),
@@ -41,7 +41,7 @@ export class TodoService {
 
   // GET /tasks
   fetchTasks (listId: number): Observable<List[]> {
-    console.log(`*** TodoService.fetchTasks(listId=${listId})`)
+    this.log(`fetchTasks(listId=${listId})`)
     return this.http.get<Task[]>(`${rootURL}/lists/${listId}/tasks.json`, {withCredentials: true})
       .pipe(
         tap(heroes => this.log("fetched Tasks")),
@@ -50,8 +50,8 @@ export class TodoService {
   }
 
 
-  private log(message: string) {
-    console.log(message);
+  private log(text: string) {
+    console.log(`** TodoService.${text}`);
   }
   
   /**

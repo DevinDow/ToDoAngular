@@ -18,17 +18,13 @@ export class AppComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.onLoggedIn = this.onLoggedIn.bind(this);
-
-    console.log("*** AppComponent.ngOnInit()")
-
+    this.log("ngOnInit()")
     let credentials: Credentials = {email: 'DevinDow@gmail.com', password: 'password'};
     this.todoService.postLogin(credentials).subscribe(() => this.logged_in = true);
   }
 
-  onLoggedIn() {
-    console.log("*** AppComponent.onLoggedIn()")
-    this.logged_in = true
+  log(text: string) {
+    console.log(`* AppComponent.${text}`);
   }
 
 }

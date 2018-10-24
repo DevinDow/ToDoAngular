@@ -13,17 +13,19 @@ export class ListsComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
+    this.log("ngOnInit()")
     this.setLists = this.setLists.bind(this);
-
-    console.log("*** ListsComponent.ngOnInit()")
-
     this.todoService.fetchLists().subscribe(lists => this.setLists(lists));
   }
 
   setLists(lists) {
+    this.log("setLists()")
+    console.log(lists)
     this.lists = lists
-    console.log("*** setLists()")
-    console.log(this.lists)
+  }
+
+  log(text: string) {
+    console.log(`* ListsComponent.${text}`);
   }
 
 }

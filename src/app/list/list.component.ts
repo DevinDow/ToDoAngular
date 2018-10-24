@@ -16,17 +16,21 @@ export class ListComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.setTasks = this.setTasks.bind(this);
+    this.log(`ngOnInit() => ${this.list.name}`)
 
-    console.log(`*** ListComponent.ngOnInit() #${this.list.id} => ${this.list.name}`)
+    this.setTasks = this.setTasks.bind(this);
 
     this.todoService.fetchTasks(this.list.id).subscribe(tasks => this.setTasks(tasks));
   }
 
   setTasks(tasks) {
+    this.log("setTasks()")
+    console.log(tasks)
     this.tasks = tasks
-    console.log("*** setTasks()")
-    console.log(this.tasks)
+  }
+
+  log(text: string) {
+    console.log(`* ListComponent#${this.list.id}.${text}`);
   }
 
 }
