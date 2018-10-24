@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { List } from '../list';
 
 import { TodoService } from "../todo.service";
-import { fetchTasks } from '../../assets/javascript/apis.js'
+import { List } from '../list';
 
 @Component({
   selector: 'app-list',

@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { TodoService } from "./todo.service";
 import { Credentials } from './credentials';
-
-import { map, tap, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
