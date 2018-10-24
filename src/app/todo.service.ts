@@ -40,7 +40,7 @@ export class TodoService {
   }
 
   // GET /tasks
-  fetchTasks (listId: number): Observable<List[]> {
+  fetchTasks (listId: number): Observable<Task[]> {
     this.log(`fetchTasks(listId=${listId})`)
     return this.http.get<Task[]>(`${rootURL}/lists/${listId}/tasks.json`, {withCredentials: true})
       .pipe(
