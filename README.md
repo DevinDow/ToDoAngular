@@ -1,5 +1,9 @@
 # ToDoAngular
 
+This is an **Angular** frontend to my [ToDoRuby](https://github.com/DevinDow/ToDoRuby) app.
+
+---
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
 
 ## Development server
