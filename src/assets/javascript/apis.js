@@ -1,11 +1,12 @@
-let rootURL = 'http://localhost:3000'
+export var rootURL = 'http://localhost:3000'
 
-function getToken() {
+export function getToken() {
   let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
   console.log('token = ' + token)
   return token
 }
 
+/* These were replaced with 
 export function login(email, password, onLoggedIn) {
   console.log("*** APIs.login()")
   fetch(rootURL + '/login.json',
@@ -136,3 +137,4 @@ export function deleteTask(id, onTaskDeleted) {
     if (onTaskDeleted) onTaskDeleted()
   })
 }
+*/
