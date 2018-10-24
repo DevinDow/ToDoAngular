@@ -24,7 +24,7 @@ export class TodoService {
     this.log("postLogin()")
     return this.http.post<boolean>(`${rootURL}/login.json`, credentials, httpOptions)
       .pipe(
-        tap(_ => {return of(true);}), // Observable<boolean> => return true),
+        tap(_ => { this.log(" logged in"); return of(true); }),
         catchError(this.handleError("postLogin()", false))
       );
   }
@@ -34,7 +34,7 @@ export class TodoService {
     this.log("fetchLists()")
     return this.http.get<List[]>(`${rootURL}/lists.json`, {withCredentials: true})
       .pipe(
-        tap(_ => this.log("fetched Lists")),
+        tap(_ => this.log(" fetched Lists")),
         catchError(this.handleError("fetchLists()", []))
       );
   }
@@ -44,7 +44,7 @@ export class TodoService {
     this.log(`fetchTasks(listId=${listId})`)
     return this.http.get<Task[]>(`${rootURL}/lists/${listId}/tasks.json`, {withCredentials: true})
       .pipe(
-        tap(_ => this.log("fetched Tasks")),
+        tap(_ => this.log(" fetched Tasks")),
         catchError(this.handleError("fetchTasks()", []))
       );
   }
