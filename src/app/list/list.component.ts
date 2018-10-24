@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
 
     console.log(`*** ListComponent.ngOnInit() #${this.list.id} => ${this.list.name}`)
 
-    this.todoService.fetchLists().subscribe(tasks => this.setTasks(tasks));
+    this.todoService.fetchTasks(this.list.id).subscribe(tasks => this.setTasks(tasks));
   }
 
   setTasks(tasks) {
