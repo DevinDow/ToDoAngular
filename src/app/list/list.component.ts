@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { List } from '../list';
 
+import { TodoService } from "../todo.service";
 import { fetchTasks } from '../../assets/javascript/apis.js'
 
 @Component({
@@ -12,14 +13,14 @@ export class ListComponent implements OnInit {
   @Input() list: List;
   tasks: {}
   
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
     this.setTasks = this.setTasks.bind(this);
 
-    console.log("*** ListComponent.ngOnInit() " + this.list.id)
+    console.log(`*** ListComponent.ngOnInit() #${this.list.id} => ${this.list.name}`)
 
-    fetchTasks(this.list.id, this.setTasks)
+    this.todoService.fetchLists().subscribe(tasks => this.setTasks(tasks));
   }
 
   setTasks(tasks) {

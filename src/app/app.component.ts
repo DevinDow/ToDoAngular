@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     console.log("*** AppComponent.ngOnInit()")
 
     let credentials: Credentials = {email: 'DevinDow@gmail.com', password: 'password'};
-    this.todoService.postLogin(credentials).subscribe(() => this.logged_in = true;);
+    this.todoService.postLogin(credentials).subscribe(() => this.logged_in = true);
   }
 
   onLoggedIn() {
